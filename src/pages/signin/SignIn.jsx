@@ -2,9 +2,10 @@ import Lottie from "lottie-react";
 import { useContext } from "react";
 import registerLottieData from "../../assets/lottie/register.json";
 import SocialLogin from "../shared/SocialLogin";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import { toast } from "react-toastify";
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
@@ -30,14 +31,15 @@ const SignIn = () => {
           })
           .then((res) => {
             console.log(res.data);
+            toast.success("Logged in Successfully.");
           });
         navigate(from);
+        form.reset();
       })
       .catch((error) => {
+        toast.warn("Wrong Credentials. Try again.");
         console.log(error);
       });
-
-    form.reset();
   };
 
   return (
@@ -73,9 +75,9 @@ const SignIn = () => {
                 required
               />
               <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
+                <p className="">
+                  Dont have an account? <Link className="text-blue-900 label-text-alt link link-hover" to='/register'>click here</Link>
+                </p>
               </label>
             </div>
             <div className="form-control mt-6">

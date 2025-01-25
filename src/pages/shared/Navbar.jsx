@@ -11,13 +11,13 @@ const Navbar = () => {
   );
   const handleSignOut = () => {
     signOutUser()
-    .then(() => {
-      console.log('Successfully signed out')
-    })
-    .catch(error => {
-      console.log('Signout error', error);
-    })
-  }
+      .then(() => {
+        console.log("Successfully signed out");
+      })
+      .catch((error) => {
+        console.log("Signout error", error);
+      });
+  };
 
   useEffect(() => {
     localStorage.setItem("theme", theme);
@@ -89,10 +89,26 @@ const Navbar = () => {
       <div className="navbar-end">
         {user ? (
           <>
-            <button onClick={handleSignOut} className="btn btn-primary">
-            <MdLogout />
-            <p>Log out</p>
+            <div className="relative flex items-center gap-2 md:gap-6">
+              <div className="relative group">
+                <img
+                  className={
+                    user.photoURL
+                      ? "w-10 h-10 object-cover rounded-full"
+                      : "hidden"
+                  }
+                  src={user?.photoURL}
+                  alt=""
+                />
+                <div className="absolute bottom-[-35px] left-1/2 transform -translate-x-1/2 hidden p-2 group-hover:block text-black text-[9px] rounded-md">
+                  {user?.displayName || "Unknown User"}
+                </div>
+              </div>
+              <button onClick={handleSignOut} className="btn btn-primary">
+              <MdLogout />
+              <p>Log out</p>
             </button>
+            </div>
           </>
         ) : (
           <>
