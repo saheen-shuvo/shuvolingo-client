@@ -1,15 +1,18 @@
 import Lottie from "lottie-react";
-import registerLottieData from "../../assets/lottie/register.json";
 import { useContext } from "react";
+import registerLottieData from "../../assets/lottie/register.json";
+import SocialLogin from "../shared/SocialLogin";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
 import AuthContext from "../../context/AuthContext/AuthContext";
-import { useNavigate } from "react-router-dom";
-// import SocialLogin from "../shared/SocialLogin";
 
-const Register = () => {
-  const { createUser } = useContext(AuthContext);
+const SignIn = () => {
+  const { signInUser } = useContext(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location.state || "/";
 
-  const handleRegister = (e) => {
+  const handleSignIn = (e) => {
     e.preventDefault();
 
     const form = e.target;
@@ -17,26 +20,24 @@ const Register = () => {
     const password = form.password.value;
     console.log(email, password);
 
-    // Password Validation
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
-
-    if (!passwordRegex.test(password)) {
-      alert(
-        "Password must be at least 6 characters long, include an uppercase letter, a lowercase letter, and a number."
-      );
-      return;
-    }
+    signInUser(email, password)
+      .then((result) => {
+        console.log("Sign in", result.user.email);
+        const user = { email: email };
+        axios
+          .post("https://job-portal-server-six-sigma.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+          });
+        navigate(from);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
 
     form.reset();
-    navigate('/')
-
-        createUser(email, password)
-          .then((result) => {
-            console.log(result.user);
-          })
-          .catch((error) => {
-            console.log(error.message);
-          });
   };
 
   return (
@@ -46,8 +47,8 @@ const Register = () => {
           <Lottie animationData={registerLottieData}></Lottie>
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-          <h1 className=" mx-auto mt-3 text-5xl font-bold">Register now!</h1>
-          <form onSubmit={handleRegister} className="card-body">
+          <h1 className=" mx-auto mt-3 text-5xl font-bold">Sign in now!</h1>
+          <form onSubmit={handleSignIn} className="card-body">
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -78,12 +79,12 @@ const Register = () => {
               </label>
             </div>
             <div className="form-control mt-6">
-              <button className="btn btn-primary">Register</button>
+              <button className="btn btn-primary">Sign in</button>
             </div>
           </form>
           <div className="divider">OR</div>
           <div className="flex justify-center">
-            {/* <SocialLogin></SocialLogin> */}
+            <SocialLogin></SocialLogin>
           </div>
         </div>
       </div>
@@ -91,4 +92,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default SignIn;
