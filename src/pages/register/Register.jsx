@@ -6,6 +6,8 @@ import { Bounce, toast } from "react-toastify";
 import { updateProfile } from "firebase/auth";
 import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import Lottie from "lottie-react";
+import registerLottieData from "../../assets/lottie/register.json";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -86,9 +88,10 @@ const Register = () => {
   const togglePasswordVisibility = () => setShowPass(!showPass);
 
   return (
-    <div className="hero">
+    <div className="hero flex justify-center bg-base-200 min-h-screen">
       <div className="hero-content flex-col">
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+        <h1 className="text-center mt-2 text-2xl font-semibold">Register Here!</h1>
           <form onSubmit={handleRegister} className="card-body">
             <div className="form-control">
               <label className="label">
@@ -158,21 +161,24 @@ const Register = () => {
                 </span>
               </label>
             </div>
-            <div className="form-control mt-6">
+            <div className="form-control mt-2">
               <button className="btn btn-primary">Sign up</button>
             </div>
-            <div className="divider">OR</div>
+            <div className="divider my-0">OR</div>
             <div className="flex justify-center">
               <SocialLogin />
             </div>
           </form>
-          <p className="text-xs text-center mb-7">
+          <p className="text-xs text-center mb-4 mt-0">
             Already have an account?{" "}
             <Link className="underline" to="/signin">
               Sign in.
             </Link>
           </p>
         </div>
+      </div>
+      <div className="text-center w-96">
+      <Lottie animationData={registerLottieData}></Lottie>
       </div>
     </div>
   );

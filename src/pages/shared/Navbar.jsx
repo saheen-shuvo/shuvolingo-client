@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { LiaLanguageSolid } from "react-icons/lia";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { MdLogout } from "react-icons/md";
 
@@ -31,10 +31,16 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <a>Parent</a>
+        <NavLink to='/findtutor'>Find Tutor</NavLink>
       </li>
       <li>
-        <a>Item 3</a>
+      <NavLink to='/addtutorial'>Add Tutorial</NavLink>
+      </li>
+      <li>
+      <NavLink to='/mytutorials'>My Tutorials</NavLink>
+      </li>
+      <li>
+      <NavLink to='/mybookedtutors'>My Booked Tutors</NavLink>
       </li>
     </>
   );
@@ -105,19 +111,15 @@ const Navbar = () => {
                 </div>
               </div>
               <button onClick={handleSignOut} className="btn btn-primary">
-              <MdLogout />
-              <p>Log out</p>
-            </button>
+                <MdLogout />
+                <p>Log out</p>
+              </button>
             </div>
           </>
         ) : (
           <>
-            <Link className="btn btn-primary" to="/register">
-              Register
-            </Link>
-            <Link className="btn btn-primary ml-1" to="/signin">
-              Sign in
-            </Link>
+            <p className="btn btn-ghost"><NavLink to="/register">Register</NavLink></p>
+            <p className="btn btn-ghost"><NavLink to="/signin">Sign in</NavLink></p>
           </>
         )}
       </div>
