@@ -38,7 +38,6 @@ const Banner = () => {
           />
           <div className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-6xl font-extrabold text-black text-center">
-                KEEP SPEAKING
             </h1>
             <p className="text-[#fcff55]  font-semibold mt-3 text-center">
 
@@ -53,7 +52,6 @@ const Banner = () => {
           />
           <div className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2">
             <h1 className="text-6xl font-extrabold text-black text-center">
-                GET LIFELESSON
             </h1>
             <p className="text-gray-700 font-semibold mt-3 text-center">
 
