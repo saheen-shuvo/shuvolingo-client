@@ -88,97 +88,97 @@ const Register = () => {
   const togglePasswordVisibility = () => setShowPass(!showPass);
 
   return (
-    <div className="hero flex justify-center bg-base-200 min-h-screen">
-      <div className="hero-content flex-col">
-        <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
-        <h1 className="text-center mt-2 text-2xl font-semibold">Register Here!</h1>
-          <form onSubmit={handleRegister} className="card-body">
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">User Name</span>
-              </label>
-              <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control relative">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <button
-                type="button"
-                onClick={togglePasswordVisibility}
-                className="btn btn-xs absolute bottom-[12px] right-2"
-                aria-label="Toggle Password Visibility"
-              >
-                {showPass ? <FaEyeSlash /> : <FaEye />}
-              </button>
-              <input
-                type={showPass ? "text" : "password"}
-                name="password"
-                placeholder="Password"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo URL</span>
-              </label>
-              <input
-                type="text"
-                name="photo"
-                placeholder="Photo URL"
-                className="input input-bordered"
-                required
-              />
-            </div>
-            <div className="form-control">
-              <label className="label cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="terms"
-                  className="checkbox"
-                />
-                <span className="label-text ml-1">
-                  Accept our terms and conditions
-                </span>
-              </label>
-            </div>
-            <div className="form-control mt-2">
-              <button className="btn btn-primary">Sign up</button>
-            </div>
-            <div className="divider my-0">OR</div>
-            <div className="flex justify-center">
-              <SocialLogin />
-            </div>
-          </form>
-          <p className="text-xs text-center mb-4 mt-0">
-            Already have an account?{" "}
-            <Link className="underline" to="/signin">
-              Sign in.
-            </Link>
-          </p>
-        </div>
+    <div className="hero bg-base-200 min-h-screen flex flex-col lg:flex-row items-center justify-center p-4">
+      {/* Form Section */}
+      <div className="card bg-base-100 w-full max-w-sm lg:w-1/2 shadow-2xl p-6">
+        <h1 className="text-center text-2xl font-semibold mb-4">Register Here!</h1>
+        <form onSubmit={handleRegister} className="card-body space-y-4">
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">User Name</span>
+            </label>
+            <input
+              type="text"
+              name="username"
+              placeholder="Username"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control relative">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <button
+              type="button"
+              onClick={togglePasswordVisibility}
+              className="btn btn-xs absolute bottom-[12px] right-2"
+              aria-label="Toggle Password Visibility"
+            >
+              {showPass ? <FaEyeSlash /> : <FaEye />}
+            </button>
+            <input
+              type={showPass ? "text" : "password"}
+              name="password"
+              placeholder="Password"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Photo URL</span>
+            </label>
+            <input
+              type="text"
+              name="photo"
+              placeholder="Photo URL"
+              className="input input-bordered"
+              required
+            />
+          </div>
+          <div className="form-control">
+            <label className="label cursor-pointer">
+              <input type="checkbox" name="terms" className="checkbox" />
+              <span className="label-text ml-1">
+                Accept our terms and conditions
+              </span>
+            </label>
+          </div>
+          <div className="form-control mt-2">
+            <button className="btn btn-primary">Sign up</button>
+          </div>
+          <div className="divider my-0">OR</div>
+          <div className="flex justify-center">
+            <SocialLogin />
+          </div>
+        </form>
+        <p className="text-xs text-center mt-4">
+          Already have an account?{" "}
+          <Link className="underline" to="/signin">
+            Sign in.
+          </Link>
+        </p>
       </div>
-      <div className="text-center w-96">
-      <Lottie animationData={registerLottieData}></Lottie>
+
+      {/* Lottie Animation */}
+      <div className="w-full lg:w-1/2 flex justify-center mt-6 lg:mt-0">
+        <Lottie
+          animationData={registerLottieData}
+          className="w-3/4 lg:w-full max-w-md"
+        />
       </div>
     </div>
   );
