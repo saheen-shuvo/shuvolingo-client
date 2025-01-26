@@ -3,7 +3,7 @@ import { FaStarHalfStroke } from "react-icons/fa6";
 
 const Stats = () => {
   return (
-    <div className="flex flex-wrap justify-between my-10 gap-4">
+    <div className="flex flex-wrap justify-between my-16 gap-4">
       <div className="w-full sm:w-auto">
         <h1 className="text-base sm:text-xl lg:text-4xl font-bold text-center">
           <CountUp start={0} end={32000} duration={3} />+

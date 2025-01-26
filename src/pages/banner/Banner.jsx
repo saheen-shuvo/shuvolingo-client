@@ -27,7 +27,7 @@ const Banner = () => {
       }, []);
 
   return (
-    <div className="swiper w-[92%] lg:w-[100%] rounded-3xl">
+    <div className="mt-8 swiper w-[92%] lg:w-[100%] rounded-3xl">
       {/* Wrapper for slides */}
       <div className="swiper-wrapper">
         <div className="swiper-slide relative">

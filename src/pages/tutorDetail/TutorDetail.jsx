@@ -1,12 +1,11 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
-const PopularTutorCard = ({ tutor }) => {
-  // eslint-disable-next-line react/prop-types
-  const { _id, name, image, language, description, price, review } = tutor;
+const TutorDetail = () => {
+  const { _id, name, image, language, description, price, review } =
+    useLoaderData();
 
   return (
-    <div className="flex flex-col sm:flex-row bg-base-100 shadow-xl rounded-2xl p-4 sm:p-0">
+    <div className="mt-16 mb-6 flex flex-col sm:flex-row bg-base-100 shadow-xl rounded-2xl p-4 sm:p-0">
       <figure className="w-full sm:w-56 h-48 sm:h-full flex-shrink-0">
         <img
           className="w-full h-full object-cover object-top rounded-t-2xl lg:rounded-l-2xl sm:rounded-l-2xl sm:rounded-t-none"
@@ -23,7 +22,7 @@ const PopularTutorCard = ({ tutor }) => {
         <div className="card-actions justify-end mt-2">
           <Link to={`/tutors/${_id}`}>
             <button className="btn btn-primary btn-sm sm:btn-md">
-              Details
+              Book Now
             </button>
           </Link>
         </div>
@@ -32,4 +31,4 @@ const PopularTutorCard = ({ tutor }) => {
   );
 };
 
-export default PopularTutorCard;
+export default TutorDetail;

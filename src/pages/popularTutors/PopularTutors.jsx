@@ -11,7 +11,8 @@ const PopularTutors = () => {
     }, [])
 
     return (
-        <div>
+        <div className="">
+            <h1 className="text-4xl font-bold text-center my-8">Our Popular Tutors</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
                 {
                     // eslint-disable-next-line react/jsx-key
