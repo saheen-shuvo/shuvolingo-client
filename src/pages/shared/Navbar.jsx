@@ -25,22 +25,31 @@ const Navbar = () => {
     document.querySelector("html").setAttribute("data-theme", localTheme);
   }, [theme]);
 
-  const links = (
+  const links = user ? (
     <>
       <li className="font-semibold">
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to='/findtutors'>Find Tutor</NavLink>
+        <NavLink to="/findtutors">Find Tutors</NavLink>
       </li>
       <li>
-      <NavLink to='/addtutorials'>Add Tutorial</NavLink>
+        <NavLink to="/addtutorials">Add Tutorials</NavLink>
       </li>
       <li>
-      <NavLink to='/mytutorials'>My Tutorials</NavLink>
+        <NavLink to="/myaddedtutorials">My Added Tutorials</NavLink>
       </li>
       <li>
-      <NavLink to='/mybookedtutors'>My Booked Tutors</NavLink>
+        <NavLink to="/mybookedtutors">My Booked Tutors</NavLink>
+      </li>
+    </>
+  ) : (
+    <>
+      <li className="font-semibold">
+        <NavLink to="/">Home</NavLink>
+      </li>
+      <li>
+        <NavLink to="/findtutors">Find Tutors</NavLink>
       </li>
     </>
   );
@@ -118,8 +127,12 @@ const Navbar = () => {
           </>
         ) : (
           <>
-            <p className="btn btn-ghost"><NavLink to="/register">Register</NavLink></p>
-            <p className="btn btn-ghost"><NavLink to="/signin">Sign in</NavLink></p>
+            <p className="btn btn-ghost">
+              <NavLink to="/register">Register</NavLink>
+            </p>
+            <p className="btn btn-ghost">
+              <NavLink to="/signin">Sign in</NavLink>
+            </p>
           </>
         )}
       </div>

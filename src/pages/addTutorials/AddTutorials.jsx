@@ -27,11 +27,11 @@ const AddTutorials = () => {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Your Job has been added",
+            title: "Your Tutorial has been added",
             showConfirmButton: false,
             timer: 1500,
           });
-          navigate("/findtutors");
+          navigate("/myaddedtutors");
         }
       });
   };
