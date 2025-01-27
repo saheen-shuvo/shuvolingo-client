@@ -7,6 +7,8 @@ import Register from "../pages/register/Register";
 import SignIn from "../pages/signin/SignIn";
 import PopularTutors from "../pages/popularTutors/PopularTutors";
 import TutorDetail from "../pages/tutorDetail/TutorDetail";
+import PrivateRoute from "./PrivateRoute";
+import AddTutorials from "../pages/addTutorials/AddTutorials";
 
   const router = createBrowserRouter([
     {
@@ -31,8 +33,12 @@ import TutorDetail from "../pages/tutorDetail/TutorDetail";
             element: <PopularTutors></PopularTutors>
         },
         {
+            path: '/addtutorials',
+            element: <PrivateRoute><AddTutorials></AddTutorials></PrivateRoute>
+        },
+        {
             path: '/tutors/:id',
-            element: <TutorDetail></TutorDetail>,
+            element: <PrivateRoute><TutorDetail></TutorDetail></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
         }
       ]

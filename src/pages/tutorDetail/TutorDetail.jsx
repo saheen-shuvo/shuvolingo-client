@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 
 const TutorDetail = () => {
-  const { _id, name, image, language, description, price, review } =
+  const { _id, name, image, language, description, price, review, email } =
     useLoaderData();
 
   return (
@@ -17,6 +17,7 @@ const TutorDetail = () => {
         <h2 className="text-lg sm:text-xl font-bold">{name}</h2>
         <p className="text-xs sm:text-sm text-gray-600">{description}</p>
         <p className="text-xs sm:text-sm font-medium">Language: {language}</p>
+        <p className="text-xs sm:text-sm font-medium">Email: {email}</p>
         <p className="text-xs sm:text-sm font-medium">Price: ${price}/hr</p>
         <p className="text-xs sm:text-sm font-medium">Rating: {review}⭐</p>
         <div className="card-actions justify-end mt-2">
