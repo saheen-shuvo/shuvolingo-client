@@ -1,33 +1,36 @@
-
-import Swal from "sweetalert2";
-import { useNavigate } from "react-router-dom";
+/* eslint-disable no-unused-vars */
 import { useContext } from "react";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import AuthContext from "../../context/AuthContext/AuthContext";
 
-const AddTutorials = () => {
-  const { loading, user } = useContext(AuthContext);
+const EditTutorials = () => {
+  const tutor = useLoaderData();
+  const { _id, name, image, language, description, price, review, email } =
+    tutor;
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  const handleAddTutorial = (e) => {
+  const handleUpdateTutorial = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const newTutorial = Object.fromEntries(formData.entries());
-    console.log(newTutorial);
+    const updatedTutorial = Object.fromEntries(formData.entries());
+    console.log(updatedTutorial);
 
-    fetch("http://localhost:5000/tutors", {
-      method: "POST",
+    fetch(`http://localhost:5000/tutors/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(newTutorial),
+      body: JSON.stringify(updatedTutorial),
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.insertedId) {
+        if (data.modifiedCount > 0) {
           Swal.fire({
             position: "center",
             icon: "success",
-            title: "Your Tutorial has been added",
+            title: "Tutorial Updated Successfully.",
             showConfirmButton: false,
             timer: 1500,
           });
@@ -36,20 +39,12 @@ const AddTutorials = () => {
       });
   };
 
-  if (loading) {
-    return (
-      <div className="flex justify-center mx-auto my-64">
-        <span className="loading loading-dots loading-xl"></span>
-      </div>
-    );
-  }
-
   return (
     <div className="my-8 lg:flex lg:flex-col lg:justify-center lg:items-center">
       <h2 className="text-xl font-bold lg:text-3xl text-center">
-        Add A New Tutorial
+        Update Your Tutorial
       </h2>
-      <form onSubmit={handleAddTutorial} className="card-body">
+      <form onSubmit={handleUpdateTutorial} className="card-body">
         {/* NAME */}
         <div className="form-control flex flex-col gap-1 lg:w-96">
           <label className="label">
@@ -149,11 +144,11 @@ const AddTutorials = () => {
           />
         </div>
         <div className="form-control mt-6">
-          <button className="btn btn-primary">Submit</button>
+          <button className="btn btn-primary">Update</button>
         </div>
       </form>
     </div>
   );
 };
 
-export default AddTutorials;
+export default EditTutorials;
