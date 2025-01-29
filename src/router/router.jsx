@@ -11,12 +11,13 @@ import PrivateRoute from "./PrivateRoute";
 import AddTutorials from "../pages/addTutorials/AddTutorials";
 import MyAddedTutorials from "../pages/myAddedTutorials/MyAddedTutorials";
 import EditTutorials from "../pages/editTutorials/EditTutorials";
+import ErrorPage from "../pages/errorPage/ErrorPage";
 
   const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
-      errorElement: <h2>Route Not Found. HEHEHEHHEE</h2>,
+      errorElement: <ErrorPage></ErrorPage>,
       children: [
         {
             path: '/',

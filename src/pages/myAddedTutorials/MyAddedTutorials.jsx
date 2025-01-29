@@ -49,7 +49,7 @@ const MyAddedTutorials = () => {
   return (
     <div>
       <h2 className="text-center mt-8 mb-8 text-2xl font-bold">
-        My Added Tutorials: {myTutors.length}
+        My Added Tutorials
       </h2>
       <div className="overflow-x-auto">
         <table className="table">

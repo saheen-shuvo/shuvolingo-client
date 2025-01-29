@@ -15,7 +15,7 @@ const Discount = () => {
       <img className="border-4 border-blue-800 border-dotted" src={winterSale} alt="" />
       </div>
       <div className="flex justify-center mt-3">
-        <NavLink to="/">
+        <NavLink to="/findtutors">
           <button className="btn btn-primary">Get Now</button>
         </NavLink>
       </div>

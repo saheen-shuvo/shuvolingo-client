@@ -6,14 +6,22 @@ import AuthContext from "../../context/AuthContext/AuthContext";
 const PopularTutors = () => {
   const { loading } = useContext(AuthContext);
   const [tutors, setTutors] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch("http://localhost:5000/tutors")
       .then((res) => res.json())
-      .then((data) => setTutors(data));
+      .then((data) => {
+        setTutors(data);
+        setIsLoading(false);
+      })
+      .catch((error) => {
+        console.error("Error fetching tutors:", error);
+        setIsLoading(false);
+      });
   }, []);
 
-  if (loading) {
+  if (loading || isLoading) {
     return (
         <div className="flex justify-center my-64">
             <span className="loading loading-dots loading-xl"></span>
