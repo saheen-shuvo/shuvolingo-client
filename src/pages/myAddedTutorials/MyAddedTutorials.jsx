@@ -13,6 +13,7 @@ const MyAddedTutorials = () => {
       .then((res) => res.json())
       .then((data) => setMyTutors(data));
   }, [user.email]);
+  console.log(user)
 
   const handleDelete = (_id) => {
     console.log(_id);

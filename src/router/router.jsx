@@ -12,49 +12,56 @@ import AddTutorials from "../pages/addTutorials/AddTutorials";
 import MyAddedTutorials from "../pages/myAddedTutorials/MyAddedTutorials";
 import EditTutorials from "../pages/editTutorials/EditTutorials";
 import ErrorPage from "../pages/errorPage/ErrorPage";
+import Categorised from "../pages/categorised/Categorised";
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <MainLayout></MainLayout>,
-      errorElement: <ErrorPage></ErrorPage>,
-      children: [
-        {
-            path: '/',
-            element: <Home></Home>
-        },
-        {
-            path: '/register',
-            element: <Register></Register>
-        },
-        {
-            path: '/signin',
-            element: <SignIn></SignIn>
-        },
-        {
-            path: '/findtutors',
-            element: <PopularTutors></PopularTutors>
-        },
-        {
-            path: '/addtutorials',
-            element: <PrivateRoute><AddTutorials></AddTutorials></PrivateRoute>
-        },
-        {
-            path: '/myaddedtutorials',
-            element: <PrivateRoute><MyAddedTutorials></MyAddedTutorials></PrivateRoute>
-        },
-        {
-            path: '/edittutorials/:id',
-            element: <PrivateRoute><EditTutorials></EditTutorials></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
-        },
-        {
-            path: '/tutors/:id',
-            element: <PrivateRoute><TutorDetail></TutorDetail></PrivateRoute>,
-            loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
-        }
-      ]
-    },
-  ]);
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainLayout></MainLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: '/register',
+        element: <Register></Register>
+      },
+      {
+        path: '/signin',
+        element: <SignIn></SignIn>
+      },
+      {
+        path: '/findtutors',
+        element: <PopularTutors></PopularTutors>
+      },
+      {
+        path: '/addtutorials',
+        element: <PrivateRoute><AddTutorials></AddTutorials></PrivateRoute>
+      },
+      {
+        path: '/myaddedtutorials',
+        element: <PrivateRoute><MyAddedTutorials></MyAddedTutorials></PrivateRoute>
+      },
+      {
+        path: '/edittutorials/:id',
+        element: <PrivateRoute><EditTutorials></EditTutorials></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
+      },
+      {
+        path: '/tutors/:language',
+        element: <PrivateRoute><Categorised></Categorised></PrivateRoute>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/tutors?language=${params.language}`),
+      },
+      {
+        path: '/tutors/:id',
+        element: <PrivateRoute><TutorDetail></TutorDetail></PrivateRoute>,
+        loader: ({params}) => fetch(`http://localhost:5000/tutors/${params.id}`)
+      }
+    ]
+  },
+]);
 
-  export default router;
+export default router;

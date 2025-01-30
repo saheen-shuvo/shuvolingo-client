@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom"; // Add this import
 import { BsMoonStarsFill } from "react-icons/bs";
 import { FaMegaport } from "react-icons/fa";
 import { GiSpain, GiTigerHead } from "react-icons/gi";
@@ -11,166 +12,80 @@ import {
 } from "react-icons/si";
 
 const LanguageCategories = () => {
+  // Define categories with their details
+  const categories = [
+    {
+      name: "English",
+      icon: <RiEnglishInput />,
+      teachers: "20,000 teachers",
+    },
+    {
+      name: "Spanish",
+      icon: <GiSpain />,
+      teachers: "6,300 teachers",
+    },
+    {
+      name: "French",
+      icon: <SiIledefrancemobilites />,
+      teachers: "2,600 teachers",
+    },
+    {
+      name: "German",
+      icon: <GiTigerHead />,
+      teachers: "1,603 teachers",
+    },
+    {
+      name: "Italian",
+      icon: <SiDigitalocean />,
+      teachers: "1,750 teachers",
+    },
+    {
+      name: "Chinese",
+      icon: <SiAirchina />,
+      teachers: "2,260 teachers",
+    },
+    {
+      name: "Arabic",
+      icon: <BsMoonStarsFill />,
+      teachers: "4,780 teachers",
+    },
+    {
+      name: "Japanese",
+      icon: <LuReceiptJapaneseYen />,
+      teachers: "3,400 teachers",
+    },
+    {
+      name: "Portuguese",
+      icon: <FaMegaport />,
+      teachers: "1,300 teachers",
+    },
+  ];
+
   return (
     <div>
       <h1 className="text-center text-3xl font-bold my-8">
         Language Categories
       </h1>
-        <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-2 mx-16">
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
+      <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-2 mx-16">
+        {categories.map((category) => (
+          <div
+            key={category.name}
+            className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg"
+          >
             {/* LOGO */}
-            <div className="text-3xl">
-              <RiEnglishInput />
-            </div>
+            <div className="text-3xl">{category.icon}</div>
             {/* TEXT */}
             <div>
-              <h1 className="text-lg font-semibold">English Tutors</h1>
-              <p className="text-sm">20,000 teachers</p>
+              <h1 className="text-lg font-semibold">{category.name} Tutors</h1>
+              <p className="text-sm">{category.teachers}</p>
             </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
+            {/* ARROW LINK */}
+            <Link to={`/tutors/${category.name}`}> {/* Dynamic link */}
+              <IoIosArrowDroprightCircle className="text-3xl hover:text-blue-500 cursor-pointer" />
+            </Link>
           </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <GiSpain />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">Spanish Tutors</h1>
-              <p className="text-sm">6,300teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <SiIledefrancemobilites />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">French Tutors</h1>
-              <p className="text-sm">2,600 teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <GiTigerHead />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">German Tutors</h1>
-              <p className="text-sm">1,603 teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <SiDigitalocean />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">Italian Tutors</h1>
-              <p className="text-sm">1,750 teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <SiAirchina />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">Chinese Tutors</h1>
-              <p className="text-sm">2,260 teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <BsMoonStarsFill />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">Arabic Tutors</h1>
-              <p className="text-sm">4,780 teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <LuReceiptJapaneseYen />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">Japanese Tutors</h1>
-              <p className="text-sm">3,400 teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-          <div className="border-2 flex items-center justify-around gap-2 p-3 rounded-lg">
-            {/* LOGO */}
-            <div className="text-3xl">
-              <FaMegaport />
-            </div>
-            {/* TEXT */}
-            <div>
-              <h1 className="text-lg font-semibold">Portuguese Tutors</h1>
-              <p className="text-sm">1,300 teachers</p>
-            </div>
-            {/* ARROW */}
-            <div>
-              <button className="text-3xl">
-                <IoIosArrowDroprightCircle />
-              </button>
-            </div>
-          </div>
-        </div>
+        ))}
+      </div>
     </div>
   );
 };
