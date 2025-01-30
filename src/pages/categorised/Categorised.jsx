@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { useParams } from "react-router-dom";
@@ -33,7 +33,7 @@ const Categorised = () => {
         })
         .catch((error) => console.error("Error fetching data:", error));
     }
-  }, []);
+  }, [user?.email, language]);
 
   if (loading) {
     return (
