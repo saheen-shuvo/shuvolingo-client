@@ -12,6 +12,8 @@ const AddTutorials = () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const newTutorial = Object.fromEntries(formData.entries());
+    newTutorial.price = parseFloat(newTutorial.price);
+    newTutorial.review = parseFloat(newTutorial.review);
     console.log(newTutorial);
 
     fetch("http://localhost:5000/tutors", {

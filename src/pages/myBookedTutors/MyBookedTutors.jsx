@@ -52,7 +52,7 @@ const MyBookedTutors = () => {
                 className="w-32 h-32 object-cover rounded-lg"
               />
               <h2 className="card-title">{tutor.language}</h2>
-              <p>Price: ${tutor.price}/hr</p>
+              <p className="font-semibold">Price: ${tutor.price}/hr</p>
               <div className="card-actions justify-between items-center">
                 <button 
                   onClick={() => handleReview(tutor.tutorId)}
