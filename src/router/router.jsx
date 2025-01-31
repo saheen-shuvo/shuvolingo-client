@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        index: true,
+        path: '/',
         element: <Home />,
       },
       {
@@ -110,10 +110,11 @@ const router = createBrowserRouter([
             const res = await fetch(
               `http://localhost:5000/tutors?language=${params.language}`
             );
-            if (!res.ok) throw new Error("Failed to fetch tutors");
-            return res.json();
-          } catch (error) {
-            throw new Error("Error loading tutors");
+            const data = await res.json()
+            return Array.isArray(data) ? data : [];
+          }catch (error) {
+            console.error('Loader error:', error);
+            return {};
           }
         },
       },

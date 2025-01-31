@@ -14,21 +14,10 @@ const Categorised = () => {
       fetch(`http://localhost:5000/tutors?language=${language}`)
         .then((res) => res.json())
         .then((data) => {
-          if (data.length > 0) {
-            const tutorLanguage = data[0].language;
-            return fetch(
-              `http://localhost:5000/tutors?language=${tutorLanguage}`
-            );
-          } else {
-            throw new Error("Tutor not found");
-          }
-        })
-        .then((res) => res.json())
-        .then((data) => {
           if (Array.isArray(data)) {
             setCategorised(data);
-          } else {
-            setCategorised([]);
+          } else{
+            setCategorised([])
           }
         })
         .catch((error) => console.error("Error fetching data:", error));

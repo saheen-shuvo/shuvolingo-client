@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const TutorDetail = () => {
   const tutor = useLoaderData();
@@ -34,7 +35,7 @@ const TutorDetail = () => {
       );
 
       if (response.data.insertedId) {
-        alert("Tutor booked successfully!");
+        toast.success("Tutor booked successfully!");
         navigate('/mybookedtutors')
       }
     } catch (err) {

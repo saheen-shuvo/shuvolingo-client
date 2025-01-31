@@ -1,7 +1,15 @@
 import { useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
-import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, GoogleAuthProvider } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import auth from "../../firebase/firebase.init";
+import { toast } from "react-toastify";
 
 // eslint-disable-next-line react/prop-types
 const AuthProvider = ({ children }) => {
@@ -21,25 +29,29 @@ const AuthProvider = ({ children }) => {
 
   const signOutUser = () => {
     setLoading(true);
+    toast.success("Logged Out Successfully");
     return signOut(auth);
   };
 
   const signInWithGoogle = () => {
     setLoading(true);
-    return signInWithPopup(auth, googleProvider);
-  }
+
+    return (
+    signInWithPopup(auth, googleProvider)
+    )
+  };
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currentUser => {
-        setUser(currentUser);
-        console.log('State Captured for =', currentUser)
-        setLoading(false);
-    })
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      console.log("State Captured for =", currentUser);
+      setLoading(false);
+    });
 
     return () => {
-        unsubscribe();
-    }
-  }, [])
+      unsubscribe();
+    };
+  }, []);
 
   const authInfo = {
     user,
@@ -49,7 +61,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     signInUser,
     signOutUser,
-    signInWithGoogle
+    signInWithGoogle,
   };
 
   return (

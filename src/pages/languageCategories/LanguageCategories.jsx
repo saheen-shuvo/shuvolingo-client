@@ -80,7 +80,7 @@ const LanguageCategories = () => {
               <p className="text-sm">{category.teachers}</p>
             </div>
             {/* ARROW LINK */}
-            <Link to={`/tutors/${category.name}`}> {/* Dynamic link */}
+            <Link to={`/tutors/language/${category.name}`}> {/* Dynamic link */}
               <IoIosArrowDroprightCircle className="text-3xl hover:text-blue-500 cursor-pointer" />
             </Link>
           </div>
