@@ -17,7 +17,7 @@ const EditTutorials = () => {
     const updatedTutorial = Object.fromEntries(formData.entries());
     console.log(updatedTutorial);
 
-    fetch(`http://localhost:5000/tutors/${_id}`, {
+    fetch(`https://shuvolingo-server.vercel.app/tutors/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

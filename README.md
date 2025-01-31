@@ -1,8 +1,31 @@
-# React + Vite
+# Shuvolingo - Language Learning Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Description
+Shuvolingo is a language learning platform that connects students with qualified tutors. The platform enables users to:
+- Search for tutors by language
+- Log in, Log Out option
+- View tutor profiles and availability
+- Book tutoring sessions
+- Manage Tutor Booking 
+- Add Tutorials
 
-Currently, two official plugins are available:
+# Live Link: https://shuvolingo-client.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+# Key Features
+-  Language-based tutor search functionality
+-  Tutor profile management system
+-  Booking and session management
+-  Rating and review system
+-  User authentication and authorization
+-  Responsive mobile-first design
+
+# Technologies Used
+# Frontend
+- React.js
+- React Router
+- Tailwind CSS + DaisyUI
+- Axios
+- Swiper.js
+# Backend
+- Express.js
+- MongoDB

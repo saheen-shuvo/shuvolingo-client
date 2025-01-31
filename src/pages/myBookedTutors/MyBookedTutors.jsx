@@ -12,7 +12,7 @@ const MyBookedTutors = () => {
     const fetchBookedTutors = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/bookedtutors?email=${user.email}`
+          `https://shuvolingo-server.vercel.app/bookedtutors?email=${user.email}`
         );
         setBookedTutors(response.data);
       } catch (error) {
@@ -25,13 +25,17 @@ const MyBookedTutors = () => {
 
   const handleReview = async (tutorId) => {
     try {
-      const result =  await axios.put(
-        `http://localhost:5000/tutors/review/${tutorId}`
+      const result = await axios.put(
+        `https://shuvolingo-server.vercel.app/tutors/review/${tutorId}`
       );
-        toast.success("Review Submitted Successfully");
-        setBookedTutors(prev => prev.map(tutor => 
-          tutor.tutorId === tutorId ? {...tutor, review: tutor.review + 1} : tutor
-        ));
+      toast.success("Review Submitted Successfully");
+      setBookedTutors((prev) =>
+        prev.map((tutor) =>
+          tutor.tutorId === tutorId
+            ? { ...tutor, review: tutor.review + 1 }
+            : tutor
+        )
+      );
     } catch (error) {
       console.error("Review submission failed:", error);
       alert("Failed to submit review. Please try again.");
@@ -45,8 +49,8 @@ const MyBookedTutors = () => {
         {bookedTutors.map((tutor) => (
           <div key={tutor._id} className="card bg-base-100 shadow-xl">
             <div className="card-body">
-              <img 
-                src={tutor.image} 
+              <img
+                src={tutor.image}
                 alt={tutor.language}
                 className="w-32 h-32 object-cover rounded-lg"
               />
@@ -54,7 +58,7 @@ const MyBookedTutors = () => {
               <p className="font-semibold">Price: ${tutor.price}/hr</p>
               <p className="font-semibold">Email: {tutor.email}</p>
               <div className="card-actions justify-between items-center">
-                <button 
+                <button
                   onClick={() => handleReview(tutor.tutorId)}
                   className="btn btn-success"
                 >

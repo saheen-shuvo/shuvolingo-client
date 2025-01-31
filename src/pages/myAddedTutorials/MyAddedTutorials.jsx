@@ -9,11 +9,11 @@ const MyAddedTutorials = () => {
   const { user } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/tutors?email=${user.email}`)
+    fetch(`https://shuvolingo-server.vercel.app/tutors?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => setMyTutors(data));
   }, [user.email]);
-  console.log(user)
+  console.log(user);
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -27,7 +27,7 @@ const MyAddedTutorials = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/tutors/${_id}`, {
+        fetch(`https://shuvolingo-server.vercel.app/tutors/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

@@ -1,4 +1,3 @@
-
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
@@ -16,7 +15,7 @@ const AddTutorials = () => {
     newTutorial.review = parseFloat(newTutorial.review);
     console.log(newTutorial);
 
-    fetch("http://localhost:5000/tutors", {
+    fetch("https://shuvolingo-server.vercel.app/tutors", {
       method: "POST",
       headers: {
         "content-type": "application/json",

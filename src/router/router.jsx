@@ -22,7 +22,7 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           try {
             const res = await fetch(
-              `http://localhost:5000/tutors/${params.id}`
+              `https://shuvolingo-server.vercel.app/tutors/${params.id}`
             );
             if (!res.ok) throw new Error("Failed to fetch tutorial");
             return res.json();
@@ -90,7 +90,7 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           try {
             const response = await axios.get(
-              `http://localhost:5000/tutors/${params.id}`
+              `https://shuvolingo-server.vercel.app/tutors/${params.id}`
             );
             return response.data;
           } catch (error) {
@@ -108,12 +108,12 @@ const router = createBrowserRouter([
         loader: async ({ params }) => {
           try {
             const res = await fetch(
-              `http://localhost:5000/tutors?language=${params.language}`
+              `https://shuvolingo-server.vercel.app/tutors?language=${params.language}`
             );
-            const data = await res.json()
+            const data = await res.json();
             return Array.isArray(data) ? data : [];
-          }catch (error) {
-            console.error('Loader error:', error);
+          } catch (error) {
+            console.error("Loader error:", error);
             return {};
           }
         },

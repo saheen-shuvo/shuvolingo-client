@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { useParams } from "react-router-dom";
@@ -11,13 +10,13 @@ const Categorised = () => {
 
   useEffect(() => {
     if (user?.email) {
-      fetch(`http://localhost:5000/tutors?language=${language}`)
+      fetch(`https://shuvolingo-server.vercel.app/tutors?language=${language}`)
         .then((res) => res.json())
         .then((data) => {
           if (Array.isArray(data)) {
             setCategorised(data);
-          } else{
-            setCategorised([])
+          } else {
+            setCategorised([]);
           }
         })
         .catch((error) => console.error("Error fetching data:", error));

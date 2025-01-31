@@ -18,7 +18,7 @@ const TutorDetail = () => {
   const handleBookTutor = async () => {
     setLoading(true);
     setError("");
-    
+
     try {
       const bookingData = {
         tutorId: tutor._id,
@@ -26,20 +26,22 @@ const TutorDetail = () => {
         language: tutor.language,
         price: tutor.price,
         tutorEmail: tutor.email,
-        email: user?.email
+        email: user?.email,
       };
 
       const response = await axios.post(
-        "http://localhost:5000/bookedtutors",
+        "https://shuvolingo-server.vercel.app/bookedtutors",
         bookingData
       );
 
       if (response.data.insertedId) {
         toast.success("Tutor booked successfully!");
-        navigate('/mybookedtutors')
+        navigate("/mybookedtutors");
       }
     } catch (err) {
-      setError(err.response?.data?.message || "Booking failed. Please try again.");
+      setError(
+        err.response?.data?.message || "Booking failed. Please try again."
+      );
       console.error("Booking error:", err);
     } finally {
       setLoading(false);
