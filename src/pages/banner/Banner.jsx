@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 import { useEffect } from 'react';
-import banner1 from '../../assets/images/banner1.jpeg';
-import banner2 from '../../assets/images/banner2.jpeg';
-import banner3 from '../../assets/images/banner3.jpeg';
+import banner1 from '../../assets/images/banner1.jpg';
+import banner2 from '../../assets/images/banner2.jpg';
+import banner3 from '../../assets/images/banner3.jpg';
 import { Navigation, Pagination } from 'swiper/modules';
 import Swiper from 'swiper/bundle';
 import 'swiper/css/bundle';
@@ -26,13 +26,13 @@ const Banner = () => {
   }, []);
 
   return (
-    <div className="mt-8 swiper w-[92%] lg:w-[100%] rounded-3xl mx-auto">
+    <div className="mt-24 max-w-7xl  swiper w-[92%] lg:w-[100%] rounded-3xl mx-auto">
       {/* Wrapper for slides */}
       <div className="swiper-wrapper">
         {/* Slide 1 */}
         <div className="swiper-slide relative">
           <img
-            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[550px] w-full object-cover"
+            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[650px] w-full object-contain md:object-cover"
             src={banner3}
             alt="Banner 3"
           />
@@ -49,7 +49,7 @@ const Banner = () => {
         {/* Slide 2 */}
         <div className="swiper-slide relative">
           <img
-            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[550px] w-full object-cover"
+            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[650px] w-full object-contain md:object-cover"
             src={banner1}
             alt="Banner 1"
           />
@@ -66,7 +66,7 @@ const Banner = () => {
         {/* Slide 3 */}
         <div className="swiper-slide relative">
           <img
-            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[550px] w-full object-cover"
+            className="h-[200px] sm:h-[300px] md:h-[400px] lg:h-[650px] w-full object-contain md:object-cover"
             src={banner2}
             alt="Banner 2"
           />

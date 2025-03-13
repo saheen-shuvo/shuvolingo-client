@@ -1,5 +1,4 @@
-/* eslint-disable no-unused-vars */
-/* eslint-disable react/jsx-key */
+
 import { useContext, useEffect, useState } from "react";
 import PopularTutorCard from "../popularTutorCard/PopularTutorCard";
 import AuthContext from "../../context/AuthContext/AuthContext";
