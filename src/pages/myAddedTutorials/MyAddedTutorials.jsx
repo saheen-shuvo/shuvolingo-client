@@ -48,7 +48,7 @@ const MyAddedTutorials = () => {
   };
 
   return (
-    <div>
+    <div className="mt-20 md:mt-24 mx-4">
       <h2 className="text-center mt-8 mb-8 text-2xl font-bold">
         My Added Tutorials
       </h2>

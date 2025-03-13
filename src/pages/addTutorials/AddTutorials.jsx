@@ -46,7 +46,7 @@ const AddTutorials = () => {
   }
 
   return (
-    <div className="my-8 lg:flex lg:flex-col lg:justify-center lg:items-center">
+    <div className="my-8 lg:flex lg:flex-col lg:justify-center lg:items-center mt-20 md:mt-24">
       <h2 className="text-xl font-bold lg:text-3xl text-center">
         Add A New Tutorial
       </h2>

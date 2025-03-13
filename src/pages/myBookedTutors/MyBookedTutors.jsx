@@ -43,24 +43,26 @@ const MyBookedTutors = () => {
   };
 
   return (
-    <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">My Booked Tutors</h1>
-      <div className="grid gap-4">
+    <div className="mt-20 md:mt-24 max-w-7xl mx-auto">
+      <h1 className="text-2xl font-bold mb-6 text-center">My Booked Tutors</h1>
+      <div className="grid gap-4 grid-cols-1 lg:grid-cols-3 mx-4 md:mx-0">
         {bookedTutors.map((tutor) => (
-          <div key={tutor._id} className="card bg-base-100 shadow-xl">
-            <div className="card-body">
+          <div key={tutor._id} className="card bg-base-200 shadow-sm">
+            <figure className="px-10 pt-10">
               <img
                 src={tutor.image}
                 alt={tutor.language}
-                className="w-32 h-32 object-cover rounded-lg"
+                className="rounded-xl w-56 h-64 object-cover"
               />
+            </figure>
+            <div className="card-body items-center text-center">
               <h2 className="card-title">{tutor.language}</h2>
               <p className="font-semibold">Price: ${tutor.price}/hr</p>
-              <p className="font-semibold">Email: {tutor.email}</p>
-              <div className="card-actions justify-between items-center">
+              <p className="text-gray-600">Email: {tutor.email}</p>
+              <div className="card-actions">
                 <button
                   onClick={() => handleReview(tutor.tutorId)}
-                  className="btn btn-success"
+                  className="btn btn-primary"
                 >
                   Add Review
                 </button>
