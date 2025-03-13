@@ -48,26 +48,21 @@ const TutorDetail = () => {
     }
   };
   return (
-    <div className="mt-16 mb-6 flex flex-col sm:flex-row bg-base-100 shadow-xl rounded-2xl p-4 sm:p-0">
-      <figure className="w-full sm:w-56 h-48 sm:h-full flex-shrink-0">
+    <div className="hero bg-base-200 mt-20 md:mt-28 max-w-7xl mx-auto rounded-2xl">
+      <div className="hero-content flex-col lg:flex-row">
         <img
-          className="w-full h-full object-cover object-top rounded-t-2xl lg:rounded-l-2xl sm:rounded-l-2xl sm:rounded-t-none"
           src={image}
+          className="max-w-sm rounded-lg shadow-2xl"
           alt={`${name}'s profile`}
         />
-      </figure>
-      <div className="card-body flex-1">
-        <h2 className="text-lg sm:text-xl font-bold">{name}</h2>
-        <p className="text-xs sm:text-sm text-gray-600">{description}</p>
-        <p className="text-xs sm:text-sm font-medium">Language: {language}</p>
-        <p className="text-xs sm:text-sm font-medium">Email: {email}</p>
-        <p className="text-xs sm:text-sm font-medium">Price: ${price}/hr</p>
-        <p className="text-xs sm:text-sm font-medium">Rating: {review}⭐</p>
-        <div className="card-actions justify-end mt-2">
-          <button
-            onClick={handleBookTutor}
-            className="btn btn-primary btn-sm sm:btn-md"
-          >
+        <div>
+          <h1 className="text-3xl sm:text-5xl font-bold">{name}</h1>
+          <p className="py-4 text-gray-600">{description}</p>
+          <p className="text-lg font-medium">Language: {language}</p>
+          <p className="text-lg font-medium">Email: {email}</p>
+          <p className="text-lg font-medium">Price: ${price}/hr</p>
+          <p className="text-lg font-medium">Rating: {review}⭐</p>
+          <button onClick={handleBookTutor} className="btn btn-primary mt-4">
             Book Now
           </button>
         </div>

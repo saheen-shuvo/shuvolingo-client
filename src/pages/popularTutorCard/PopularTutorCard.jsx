@@ -6,7 +6,7 @@ const PopularTutorCard = ({ tutor }) => {
   const { _id, name, image, language, description, price, review } = tutor;
 
   return (
-    <div className="flex flex-col sm:flex-row bg-base-100 shadow-xl rounded-2xl p-4 sm:p-0">
+    <div className="flex flex-col sm:flex-row bg-base-100 shadow-xl rounded-2xl p-4 sm:p-0 ">
       <figure className="w-full sm:w-56 h-48 sm:h-full flex-shrink-0">
         <img
           className="w-full h-full object-cover object-top rounded-t-2xl lg:rounded-l-2xl sm:rounded-l-2xl sm:rounded-t-none"
