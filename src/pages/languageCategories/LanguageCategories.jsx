@@ -62,11 +62,11 @@ const LanguageCategories = () => {
   ];
 
   return (
-    <div>
-      <h1 className="text-center text-3xl font-bold my-8">
+    <div className="max-w-7xl mx-auto">
+      <h1 className="text-center text-xl md:text-3xl font-bold my-8">
         Language Categories
       </h1>
-      <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-2 mx-16">
+      <div className="grid sm:grid-cols-1 md:grid-cols-3 gap-2 mx-8 md:mx-24 ">
         {categories.map((category) => (
           <div
             key={category.name}

@@ -1,8 +1,8 @@
 /* eslint-disable react/no-unescaped-entities */
 const Faq = () => {
   return (
-    <div className="my-12">
-        <h1 className="text-center text-4xl font-bold my-3">Frequently Asked Questions</h1>
+    <div className="my-8 md:my-12 max-w-7xl mx-auto px-4 md:px-0">
+        <h1 className="text-center text-xl md:text-3xl font-bold mb-8">Frequently Asked Questions</h1>
       <div className="collapse collapse-arrow bg-base-200">
         <input type="radio" name="my-accordion-2" defaultChecked />
         <div className="collapse-title text-xl font-medium">

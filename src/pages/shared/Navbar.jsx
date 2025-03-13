@@ -63,7 +63,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar fixed z-20 top-0 bg-[#B2A5FF] text-black font-semibold md:px-8">
+    <div className="navbar fixed z-20 top-0 bg-base-300  font-semibold md:px-8">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -93,7 +93,7 @@ const Navbar = () => {
           <p className="text-xl font-bold text-green-800">
             <LiaLanguageSolid />
           </p>
-          <p className="text-sm md:text-xl font-bold inline text-[#493D9E]">
+          <p className="text-sm md:text-xl font-bold inline text-[#d59500]">
             Shuvo<span className="text-[#ce0fa8]">lingo</span>
           </p>
         </div>
