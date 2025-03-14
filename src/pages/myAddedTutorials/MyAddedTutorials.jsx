@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-key */
 import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
@@ -15,7 +14,7 @@ const MyAddedTutorials = () => {
     fetch(`https://shuvolingo-server.vercel.app/tutors?email=${user.email}`)
       .then((res) => res.json())
       .then((data) => {
-        setMyTutors(data);
+        setMyTutors(data || []);
         setIsLoading(false);
       });
   }, [user.email]);
@@ -65,12 +64,14 @@ const MyAddedTutorials = () => {
       <h2 className="text-center mt-8 mb-8 text-2xl font-bold">
         My Added Tutorials
       </h2>
-      {myTutors.length === 0 ? (
-        <div className="text-center text-xl font-semibold text-gray-500 my-28">
+      {!myTutors || myTutors.length === 0 ? (
+        <div className="text-center text-xl font-semibold my-28">
           You have not added any tutorial yet! <br />
           <br />
-          <Link to='/addtutorials'>
-            <button className="btn btn-primary">Add Tutorial <MdAdd /></button>
+          <Link to="/addtutorials">
+            <button className="btn btn-primary">
+              Add Tutorial <MdAdd />
+            </button>
           </Link>
         </div>
       ) : (

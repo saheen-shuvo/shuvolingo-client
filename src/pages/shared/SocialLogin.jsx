@@ -13,11 +13,11 @@ const SocialLogin = () => {
       .then((result) => {
         console.log(result.user);
         toast.success("Logged in Successfully");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error.message);
       });
-    navigate("/");
   };
   return (
     <div>

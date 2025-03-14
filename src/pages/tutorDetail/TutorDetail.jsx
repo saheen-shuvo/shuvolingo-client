@@ -63,7 +63,10 @@ const TutorDetail = () => {
           <p className="text-lg font-medium">Language: {language}</p>
           <p className="text-lg font-medium">Email: {email}</p>
           <p className="text-lg font-medium">Price: ${price}/hr</p>
-          <p className="text-lg font-medium flex items-center gap-1">Rating: {review}<FaRegStarHalfStroke /></p>
+          <p className="text-lg font-medium flex items-center gap-1">
+            Rating: {review}
+            <FaRegStarHalfStroke />
+          </p>
           <button onClick={handleBookTutor} className="btn btn-primary mt-4">
             Book Now <IoBookmarks />
           </button>

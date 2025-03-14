@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const MyBookedTutors = () => {
-  const [bookedTutors, setBookedTutors] = useState(['']);
+  const [bookedTutors, setBookedTutors] = useState([""]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +34,7 @@ const MyBookedTutors = () => {
         `https://shuvolingo-server.vercel.app/tutors/review/${tutorId}`
       );
       toast.success("Review Submitted Successfully");
-      navigate('/findtutors')
+      navigate("/findtutors");
       setBookedTutors((prev) =>
         prev.map((tutor) =>
           tutor.tutorId === tutorId

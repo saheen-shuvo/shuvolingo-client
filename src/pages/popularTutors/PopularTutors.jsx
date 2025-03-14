@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react";
 import PopularTutorCard from "../popularTutorCard/PopularTutorCard";
 import AuthContext from "../../context/AuthContext/AuthContext";
@@ -66,16 +65,22 @@ const PopularTutors = () => {
         />
         <div className="flex justify-center gap-2">
           <button
-            className={`btn ${sortOrder === "asc" ? "btn-primary" : "btn-outline"}`}
+            className={`btn ${
+              sortOrder === "asc" ? "btn-primary" : "btn-outline"
+            }`}
             onClick={() => handleSort("asc")}
           >
-            Sort by Price<FaArrowUp />
+            Sort by Price
+            <FaArrowUp />
           </button>
           <button
-            className={`btn ${sortOrder === "desc" ? "btn-primary" : "btn-outline"}`}
+            className={`btn ${
+              sortOrder === "desc" ? "btn-primary" : "btn-outline"
+            }`}
             onClick={() => handleSort("desc")}
           >
-            Sort by Price<FaArrowDown />
+            Sort by Price
+            <FaArrowDown />
           </button>
         </div>
       </div>
