@@ -8,6 +8,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { toast } from "react-toastify";
+import { PiSignInBold } from "react-icons/pi";
 
 const SignIn = () => {
   const { signInUser } = useContext(AuthContext);
@@ -41,7 +42,7 @@ const SignIn = () => {
   };
 
   return (
-    <div className="hero bg-base-200 min-h-screen flex flex-col lg:flex-row items-center justify-center p-4">
+    <div className="hero  min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 mt-20 md:mt-24 px-4 md:px-0 max-w-7xl mx-auto">
       {/* Animation Section */}
       <div className="w-full lg:w-1/2 flex justify-center mb-6 lg:mb-0">
         <Lottie animationData={registerLottieData} className="w-3/4 lg:w-full max-w-md" />
@@ -84,7 +85,7 @@ const SignIn = () => {
             </label>
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary w-full">Sign in</button>
+            <button className="btn btn-primary w-full">Sign in <PiSignInBold /></button>
           </div>
         </form>
         <div className="divider">OR</div>

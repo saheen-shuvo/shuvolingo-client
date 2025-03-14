@@ -8,6 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Lottie from "lottie-react";
 import registerLottieData from "../../assets/lottie/register.json";
+import { PiSignInBold } from "react-icons/pi";
 
 const Register = () => {
   const [showPass, setShowPass] = useState(false);
@@ -88,7 +89,7 @@ const Register = () => {
   const togglePasswordVisibility = () => setShowPass(!showPass);
 
   return (
-    <div className="hero bg-base-200 min-h-screen flex flex-col lg:flex-row items-center justify-center p-4">
+    <div className="hero  min-h-screen flex flex-col lg:flex-row items-center justify-center p-4 mt-20 md:mt-24 px-4 md:px-0 max-w-7xl mx-auto">
       {/* Form Section */}
       <div className="card bg-base-100 w-full max-w-sm lg:w-1/2 shadow-2xl p-6">
         <h1 className="text-center text-2xl font-semibold mb-4">Register Here!</h1>
@@ -158,7 +159,7 @@ const Register = () => {
             </label>
           </div>
           <div className="form-control mt-2">
-            <button className="btn btn-primary">Sign up</button>
+            <button className="btn btn-primary w-full">Sign up <PiSignInBold /></button>
           </div>
           <div className="divider my-0">OR</div>
           <div className="flex justify-center">

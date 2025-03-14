@@ -3,17 +3,22 @@ import { useContext, useEffect, useState } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { MdAdd } from "react-icons/md";
 
 const MyAddedTutorials = () => {
   const [myTutors, setMyTutors] = useState([]);
   const { user } = useContext(AuthContext);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     fetch(`https://shuvolingo-server.vercel.app/tutors?email=${user.email}`)
       .then((res) => res.json())
-      .then((data) => setMyTutors(data));
+      .then((data) => {
+        setMyTutors(data);
+        setIsLoading(false);
+      });
   }, [user.email]);
-  console.log(user);
 
   const handleDelete = (_id) => {
     console.log(_id);
@@ -47,67 +52,88 @@ const MyAddedTutorials = () => {
     });
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center my-64">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
+  }
+
   return (
     <div className="mt-20 md:mt-24 mx-4">
       <h2 className="text-center mt-8 mb-8 text-2xl font-bold">
         My Added Tutorials
       </h2>
-      <div className="overflow-x-auto">
-        <table className="table">
-          {/* head */}
-          <thead>
-            <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
-              <th>Name</th>
-              <th>Image</th>
-              <th>Language</th>
-              <th>Price</th>
-              <th>Review</th>
-              <th>Description</th>
-              <th>Delete</th>
-              <th>Update</th>
-            </tr>
-          </thead>
-          <tbody>
-            {myTutors?.map((tutor, index) => (
+      {myTutors.length === 0 ? (
+        <div className="text-center text-xl font-semibold text-gray-500 my-28">
+          You have not added any tutorial yet! <br />
+          <br />
+          <Link to='/addtutorials'>
+            <button className="btn btn-primary">Add Tutorial <MdAdd /></button>
+          </Link>
+        </div>
+      ) : (
+        <div className="overflow-x-auto">
+          <table className="table">
+            {/* head */}
+            <thead>
               <tr>
-                <th>{index + 1}</th>
-                <td>{tutor.name}</td>
-                <td>
-                  <img
-                    className="w-8 h-10 rounded-lg border"
-                    src={tutor.image}
-                    alt=""
-                  />
-                </td>
-                <td>{tutor?.language}</td>
-                <td>{tutor?.price}$/hr</td>
-                <td>{tutor?.review}⭐</td>
-                <td>{tutor?.description}</td>
-                <td>
-                  <button
-                    onClick={() => handleDelete(tutor._id)}
-                    className="btn border-2 border-red-700"
-                  >
-                    Delete
-                  </button>
-                </td>
-                <td>
-                  <Link to={`/edittutorials/${tutor._id}`}>
-                    <button className="btn border-2 border-green-700">
-                      Edit
-                    </button>
-                  </Link>
-                </td>
+                <th>
+                  <label>
+                    <input type="checkbox" className="checkbox" />
+                  </label>
+                </th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Language</th>
+                <th>Price</th>
+                <th>Review</th>
+                <th>Description</th>
+                <th>Delete</th>
+                <th>Update</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </thead>
+            <tbody>
+              {myTutors?.map((tutor, index) => (
+                <tr key={tutor._id}>
+                  <th>{index + 1}</th>
+                  <td>{tutor.name}</td>
+                  <td>
+                    <img
+                      className="w-8 h-10 rounded-lg border"
+                      src={tutor.image}
+                      alt=""
+                    />
+                  </td>
+                  <td>{tutor?.language}</td>
+                  <td>{tutor?.price}$/hr</td>
+                  <td className="flex items-center gap-1">
+                    {tutor?.review}
+                    <FaRegStarHalfStroke />
+                  </td>
+                  <td>{tutor?.description}</td>
+                  <td>
+                    <button
+                      onClick={() => handleDelete(tutor._id)}
+                      className="btn border-2 border-red-700"
+                    >
+                      Delete
+                    </button>
+                  </td>
+                  <td>
+                    <Link to={`/edittutorials/${tutor._id}`}>
+                      <button className="btn border-2 border-green-700">
+                        Edit
+                      </button>
+                    </Link>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

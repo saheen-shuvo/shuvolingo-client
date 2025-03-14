@@ -1,3 +1,5 @@
+import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { MdArrowOutward } from "react-icons/md";
 import { Link } from "react-router-dom";
 
 // eslint-disable-next-line react/prop-types
@@ -19,11 +21,11 @@ const PopularTutorCard = ({ tutor }) => {
         <p className="text-xs sm:text-sm text-gray-600">{description}</p>
         <p className="text-xs sm:text-sm font-medium">Language: {language}</p>
         <p className="text-xs sm:text-sm font-medium">Price: ${price}/hr</p>
-        <p className="text-xs sm:text-sm font-medium">Rating: {review}⭐</p>
+        <p className="text-xs sm:text-sm font-medium flex items-center gap-1">Rating: {review}<FaRegStarHalfStroke /></p>
         <div className="card-actions justify-end mt-2">
           <Link to={`/tutors/${_id}`}>
             <button className="btn btn-primary btn-sm sm:btn-md">
-              Details
+              Details <MdArrowOutward />
             </button>
           </Link>
         </div>

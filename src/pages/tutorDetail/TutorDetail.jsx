@@ -5,6 +5,8 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { FaRegStarHalfStroke } from "react-icons/fa6";
+import { IoBookmarks } from "react-icons/io5";
 
 const TutorDetail = () => {
   const tutor = useLoaderData();
@@ -61,9 +63,9 @@ const TutorDetail = () => {
           <p className="text-lg font-medium">Language: {language}</p>
           <p className="text-lg font-medium">Email: {email}</p>
           <p className="text-lg font-medium">Price: ${price}/hr</p>
-          <p className="text-lg font-medium">Rating: {review}⭐</p>
+          <p className="text-lg font-medium flex items-center gap-1">Rating: {review}<FaRegStarHalfStroke /></p>
           <button onClick={handleBookTutor} className="btn btn-primary mt-4">
-            Book Now
+            Book Now <IoBookmarks />
           </button>
         </div>
       </div>

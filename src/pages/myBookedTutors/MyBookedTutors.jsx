@@ -3,10 +3,13 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 const MyBookedTutors = () => {
-  const [bookedTutors, setBookedTutors] = useState([]);
+  const [bookedTutors, setBookedTutors] = useState(['']);
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const fetchBookedTutors = async () => {
@@ -15,8 +18,10 @@ const MyBookedTutors = () => {
           `https://shuvolingo-server.vercel.app/bookedtutors?email=${user.email}`
         );
         setBookedTutors(response.data);
+        setIsLoading(false);
       } catch (error) {
         console.error("Error fetching booked tutors:", error);
+        setIsLoading(false);
       }
     };
 
@@ -29,6 +34,7 @@ const MyBookedTutors = () => {
         `https://shuvolingo-server.vercel.app/tutors/review/${tutorId}`
       );
       toast.success("Review Submitted Successfully");
+      navigate('/findtutors')
       setBookedTutors((prev) =>
         prev.map((tutor) =>
           tutor.tutorId === tutorId
@@ -41,6 +47,14 @@ const MyBookedTutors = () => {
       alert("Failed to submit review. Please try again.");
     }
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center my-64">
+        <span className="loading loading-dots loading-xl"></span>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-20 md:mt-24 max-w-7xl mx-auto">

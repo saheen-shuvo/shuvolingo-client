@@ -2,6 +2,7 @@
 import { useContext, useEffect, useState } from "react";
 import PopularTutorCard from "../popularTutorCard/PopularTutorCard";
 import AuthContext from "../../context/AuthContext/AuthContext";
+import { FaArrowDown, FaArrowUp } from "react-icons/fa";
 
 const PopularTutors = () => {
   const { loading } = useContext(AuthContext);
@@ -51,7 +52,7 @@ const PopularTutors = () => {
   }
 
   return (
-    <div className="mt-20 md:mt-24 max-w-7xl mx-auto">
+    <div className="mt-20 md:mt-24 px-4 md:px-0 max-w-7xl mx-auto">
       <h1 className="text-3xl md:text-3xl font-bold text-center my-8">
         Our Popular Tutors
       </h1>
@@ -68,13 +69,13 @@ const PopularTutors = () => {
             className={`btn ${sortOrder === "asc" ? "btn-primary" : "btn-outline"}`}
             onClick={() => handleSort("asc")}
           >
-            Sort by Price ↑
+            Sort by Price<FaArrowUp />
           </button>
           <button
             className={`btn ${sortOrder === "desc" ? "btn-primary" : "btn-outline"}`}
             onClick={() => handleSort("desc")}
           >
-            Sort by Price ↓
+            Sort by Price<FaArrowDown />
           </button>
         </div>
       </div>

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import AuthContext from "../../context/AuthContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FcGoogle } from "react-icons/fc";
 
 const SocialLogin = () => {
   const { signInWithGoogle } = useContext(AuthContext);
@@ -21,7 +22,7 @@ const SocialLogin = () => {
   return (
     <div>
       <button onClick={handleGoogleSignIn} className="btn btn-primary mb-4">
-        Google
+        Google <FcGoogle />
       </button>
     </div>
   );
